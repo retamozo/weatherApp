@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "noStrictGenericChecks": false,
+    "strict": true,
+    "outDir": "./dist",
+    "target": "ES2018",
+    "lib": ["ESNext", "DOM"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "jsx": "react",
+    "alwaysStrict": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "parcel-plugin-typescript": {
+    "transpileOnly": false
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist", ".parcel-cache"]
+}
