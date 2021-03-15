@@ -54,5 +54,6 @@ module.exports = {
   ignorePatterns: [
     // ignoring this files to prevent eslint warnings due to commonjs usage
     'eslintrc.js',
+    'jest.config.js'
   ],
 };
