@@ -49,7 +49,7 @@ const style = css`
     & > div {
       display: inline-block;
       margin-right: 10%;
-      width: 60%;
+      width: 90%;
     }
   }
 `;
