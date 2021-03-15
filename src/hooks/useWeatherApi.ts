@@ -52,7 +52,7 @@ export const useWeatherApi: UseWeatherApi = ({ initialFetch }) => {
             }));
 
         } catch (error) {
-            console.error("ERROR CONSLTANDO CLIMA > ", error);
+            console.error("ERROR > ", error);
             setState({
                 ...state,
                 isFetching: false,

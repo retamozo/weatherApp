@@ -4,16 +4,10 @@ import { Container } from "./styles";
 import { WeatherApi } from "@/types";
 import { capitalizeFirstChar, formatDate, getWeatherImage } from "@/utils";
 
-type CardProps = {
-  isPrincipalCard?: boolean;
-  data: WeatherApi;
-};
-
-export const WeatherCard: FunctionComponent<CardProps> = ({
-  isPrincipalCard,
+export const WeatherCard: FunctionComponent<{ data: WeatherApi }> = ({
   data,
 }) => {
-  const { name, visibility, weather, main, dt } = data;
+  const { name, weather, main, dt } = data;
 
   const imageUri = getWeatherImage(weather[0].icon);
 
