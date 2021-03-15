@@ -8,7 +8,7 @@ A simple weather app with 5 days forecast 💦.
 
 # What it's missing? #
 - Styling improvements 💅
-- Testing 🤯
+- More testing 🤯
 
 ## Installing dependencies
 
@@ -20,6 +20,13 @@ npm install
 
 ```sh
 npm run dev
+```
+### Run test suits 
+
+```sh
+npm test // all suites will be executed
+
+npm test <path> // i.e npm run Row.test.tsx
 ```
 
 ## Troubleshooting
