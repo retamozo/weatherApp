@@ -12,8 +12,6 @@ export const WeatherWidget: FunctionComponent = () => {
     setCity,
   } = useWeatherApi({ initialFetch: true });
 
-  console.log(weather?.current);
-
   const curr: WeatherApi = {
     coord: {
       lon: -58.3772,
@@ -354,8 +352,6 @@ export const WeatherWidget: FunctionComponent = () => {
     ],
   };
 
-  console.log(weather?.forecast);
-
   const countries: Options<AllowedCity> = [
     { title: "Buenos Aires", value: "Buenos Aires" },
     { title: "Berlin", value: "Berlin" },
@@ -365,13 +361,12 @@ export const WeatherWidget: FunctionComponent = () => {
   ];
 
   const handleChange = (value: string) => {
-    console.log("VALUE", value);
     setCity(value as AllowedCity);
   };
 
   return (
     <>
-      <Header>
+      <div>
         <p>Elegí la ciudad sobre la cual querés consultar el clima 😄</p>
         <br />
         <Select
@@ -379,7 +374,7 @@ export const WeatherWidget: FunctionComponent = () => {
           options={countries}
           handleChange={handleChange}
         />
-      </Header>
+      </div>
       <br />
       <PrincipalWeather
         isFetching={isFetching}
@@ -395,8 +390,3 @@ export const WeatherWidget: FunctionComponent = () => {
     </>
   );
 };
-
-const Header = styled.div`
-  position: absolute;
-  top: 20%;
-`;

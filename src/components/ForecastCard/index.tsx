@@ -23,8 +23,8 @@ export const ForecastCard: FunctionComponent<{ data: DailyForecast }> = ({
         <br />
         <Footer>
           <div className="row">
-            <p>Amanece: {formatDate(sunrise).hour}~</p>
-            <p>Anochece: {formatDate(sunset).hour}~</p>
+            <p>🌞: {formatDate(sunrise).hour}~</p>
+            <p>🌙: {formatDate(sunset).hour}~</p>
           </div>
           <div className="row">
             <p>Max: {temp.max}</p>
