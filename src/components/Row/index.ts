@@ -6,7 +6,9 @@ type RowTypes = {
   overrides?: ReturnType<typeof css>;
 };
 
-export const Row = styled.div<RowTypes>`
+export const Row = styled.div.attrs(() => ({
+  "data-testid": "row"
+})) <RowTypes>`
   text-align: ${({ align }) => (align ? align : "inherit")};
   height: 100%;
   width: 50%;

@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div<{ overrides?: ReturnType<typeof css> }>`
+export const Container = styled.div.attrs(() => ({
+  "data-testid": "container"
+}))<{ overrides?: ReturnType<typeof css> }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
