@@ -5,6 +5,7 @@ A simple weather app with 5 days forecast 💦.
 - 🌠 React
 - 🧐 Typescript
 - 📦 Parcel
+- 🚀 Vercel ™️
 
 # What it's missing? #
 - Styling improvements 💅
