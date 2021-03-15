@@ -1,5 +1,5 @@
 ## Weather App 🌠 ##
-A simple weather app with 5 days forecast 💦.
+A weather app with 5 days forecast 💦.
 
 # Tech 🕵️ #
 - 🌠 React
