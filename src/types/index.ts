@@ -63,7 +63,7 @@ export type DailyForecast = {
   sunrise: number;
   sunset: number;
   temp: Record<DailyTemperatureKey, number>;
-  feels_like: Record<DailyTemperatureKey, number>;
+  feels_like: Partial<Record<DailyTemperatureKey, number>>
   weather: Weather;
   clouds: number;
   pop: number;
@@ -72,12 +72,15 @@ export type DailyForecast = {
 };
 
 export type ForecastApi = {
-  [key: string]: unknown;
+  lat: number
+  lon: number
+  timezone: string;
+  timezone_offset: number;
   daily: Array<DailyForecast>;
 };
 
+
 export interface Params {
-  city?: AllowedCity;
   initialFetch?: boolean;
 }
 
@@ -96,8 +99,14 @@ export type UseWeatherApi = (
   params: Params,
 ) => {
   state: WeatherState;
+  setCity: Dispatch<SetStateAction<AllowedCity>>
 };
 
 export type GetWeatherByCity = (
   city: AllowedCity,
 ) => Promise<any>;
+
+export type Options<Title> = {
+  title: Title
+  value: string
+}[]

@@ -8,7 +8,7 @@ const handleBackground: HandleBackground = (condition) => {
     case "Clear":
       return `url(https://i.dlpng.com/static/png/1838191--clouds-and-sky-png-1920_1080_preview.webp)`;
     case "Drizzle":
-      return `url(https://www.gardeningknowhow.com/wp-content/uploads/2019/02/clouds.jpg)`
+      return `url(https://www.gardeningknowhow.com/wp-content/uploads/2019/02/clouds.jpg)`;
     default:
       return `none`;
   }
@@ -34,5 +34,8 @@ export const Container = styled.div<{
     `};
   img {
     z-index: -1;
+    position: absolute;
+    top: -20px;
+    right: 0;
   }
 `;
