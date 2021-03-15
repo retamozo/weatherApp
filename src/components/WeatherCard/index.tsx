@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Row } from "@/components/Row";
 import { Container } from "./styles";
 import { WeatherApi } from "@/types";
-import { capitalizeFirstChar } from "@/utils";
+import { capitalizeFirstChar, formatDate, getWeatherImage } from "@/utils";
 
 type CardProps = {
   isPrincipalCard?: boolean;
@@ -13,28 +13,17 @@ export const WeatherCard: FunctionComponent<CardProps> = ({
   isPrincipalCard,
   data,
 }) => {
-  const { name, visibility, weather, main } = data;
+  const { name, visibility, weather, main, dt } = data;
 
-  const date: Date = new Date();
-
-  const options: Intl.DateTimeFormatOptions = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-
-  const today: string = date.toLocaleDateString("es-ES", options);
-
-  const imageUri = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+  const imageUri = getWeatherImage(weather[0].icon);
 
   return (
     <Container condition={weather[0].main}>
       <Row align="left">
         <h2>{name}</h2>
-        <small>{capitalizeFirstChar(today)}</small>
+        <span>{capitalizeFirstChar(formatDate(dt).fullDate)}</span>
         <br />
-        <p>{weather[0].main}</p>
+        <p>{capitalizeFirstChar(weather[0].description)}</p>
       </Row>
       <Row>
         <img src={imageUri} alt="weather-image" />

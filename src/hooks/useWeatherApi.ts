@@ -6,10 +6,11 @@ import {
     WeatherApi,
     ForecastApi,
     WeatherState,
+    AllowedCity,
 } from "../types";
 import { API_KEY, BASE_URI, EXCLUDE_PARAMS } from "../utils";
 
-export const useWeatherApi: UseWeatherApi = ({ city = "Buenos Aires", initialFetch }) => {
+export const useWeatherApi: UseWeatherApi = ({ initialFetch }) => {
 
     const [state, setState] = useState<WeatherState>({
         isError: false,
@@ -17,11 +18,13 @@ export const useWeatherApi: UseWeatherApi = ({ city = "Buenos Aires", initialFet
         weather: undefined
     })
 
+    const [city, setCity] = useState<AllowedCity>("Buenos Aires")
+
     useEffect(() => {
         if (initialFetch) {
             getWeatherByCity(city);
         }
-    }, [city]);
+    }, [city, initialFetch]);
 
     const getWeatherByCity: GetWeatherByCity = async (city) => {
 
@@ -36,7 +39,7 @@ export const useWeatherApi: UseWeatherApi = ({ city = "Buenos Aires", initialFet
 
             const { lat, lon } = weather.data.coord;
             const forecast = await axios.get<ForecastApi>(
-                `${BASE_URI}/onecall?lat=${lat}&lang=sp&lon=${lon}&exclude=${EXCLUDE_PARAMS}&appid=${API_KEY}`,
+                `${BASE_URI}/onecall?lat=${lat}&lang=sp&lon=${lon}&exclude=${EXCLUDE_PARAMS}&units=metric&appid=${API_KEY}`,
             );
 
             setState(val => ({
@@ -49,7 +52,7 @@ export const useWeatherApi: UseWeatherApi = ({ city = "Buenos Aires", initialFet
             }));
 
         } catch (error) {
-            console.error("error", error);
+            console.error("ERROR CONSLTANDO CLIMA > ", error);
             setState({
                 ...state,
                 isFetching: false,
@@ -60,5 +63,6 @@ export const useWeatherApi: UseWeatherApi = ({ city = "Buenos Aires", initialFet
 
     return {
         state,
+        setCity,
     };
 };
